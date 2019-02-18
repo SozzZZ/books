@@ -17,8 +17,8 @@
       <file leaf-file-name="user_center_order.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/users/user_center_order.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="68" column="52" lean-forward="true" selection-start-line="68" selection-start-column="52" selection-end-line="68" selection-end-column="52" />
+            <state relative-caret-position="280">
+              <caret line="74" column="19" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#!!top" />
               </folding>
@@ -158,7 +158,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="613" />
     <option name="y" value="69" />
     <option name="width" value="1254" />
@@ -395,8 +395,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
       <window_info anchor="bottom" id="调试" order="7" weight="0.32897604" />
@@ -404,7 +403,7 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.48366013" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.48366013" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.36601308" />
       <window_info anchor="right" id="Remote Host" order="3" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18869936" />
@@ -804,8 +803,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/users/user_center_order.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="68" column="52" lean-forward="true" selection-start-line="68" selection-start-column="52" selection-end-line="68" selection-end-column="52" />
+        <state relative-caret-position="280">
+          <caret line="74" column="19" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
           <folding>
             <element signature="n#div#0;n#div#0;n#!!top" />
           </folding>
