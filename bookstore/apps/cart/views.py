@@ -7,8 +7,14 @@ from django_redis import get_redis_connection
 # Create your views here.
 @login_required
 def add_cart(request):
-    books_id = request.POST.get('books_id')
-    books_count = request.POST.get('books_count')
+    if request.method == 'POST':
+        print('----------post')
+        books_id = request.POST.get('books_id')
+        books_count = request.POST.get('books_count')
+    else:
+        print('==========get')
+        books_id = request.GET.get('books_id')
+        books_count = request.GET.get('books_count')
     #判断数据合法性
     if not all([books_id,books_count]):
         return JsonResponse({'res':1, 'errmsg':'数据不完整'})
@@ -31,7 +37,7 @@ def add_cart(request):
         return JsonResponse({'res':4, 'errmsg':'商品库存不足'})
     else:
         conn.hset(cart_key,books_id,num)
-    return JsonResponse({'res':5})
+    return JsonResponse({'res':5,'msg':'加入成功'})
 
 @login_required
 def cart_count(request):

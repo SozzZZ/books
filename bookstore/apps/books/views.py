@@ -3,9 +3,15 @@ from books.models import Books
 from books.enums import *
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator
+from django.views.decorators.cache import cache_page
+from django_redis import get_redis_connection
+import logging
 
+# logger = logging.getLogger('django.request')
 # Create your views here.
+@cache_page(60*15,key_prefix='bookstore-index')
 def index(request):
+    # logger.info(request.body)
     '''首页'''
     python_new = Books.object.get_books_by_type(PYTHON,limit=3,sort='new')
     python_hot = Books.object.get_books_by_type(PYTHON,limit=4,sort='hot')
@@ -41,6 +47,15 @@ def detail(request,books_id):
     books = Books.object.get_books_by_id(books_id)
     if books is None:
         return redirect(reverse('index'))
+    if request.session.has_key('is_login'):
+        #如果用户登录 , 在redis中加入最近浏览商品
+        user_id = request.session.get('user_id')
+        conn = get_redis_connection('default')
+        key = f'history_{user_id}'
+        #先从redis删除该商品,再加入该商品 , 保留五个最近浏览的商品
+        conn.lrem(key, 0, books_id)
+        conn.lpush(key, books_id)
+        conn.ltrim(key, 0, 4)
     #商品推荐
     books_li = Books.object.get_books_by_type(type_id=books.type_id,limit=2,sort='new')
     #商品类型

@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'books.apps.BooksConfig',
     'tinymce',
-    'order.apps.OrderConfig'
+    'order.apps.OrderConfig',
+    'comments.apps.CommentsConfig',
+    'haystack',
+    'users.templatetags.filters'
 ]
 
 MIDDLEWARE = [
@@ -52,6 +55,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'utils.middleware.BookMiddleware',
+    'utils.middleware.BooksMiddleWare2',
+    'utils.middleware.UrlPathRecordMiddleware',
+    'utils.middleware.BlockedIpMiddleware',
 ]
 
 ROOT_URLCONF = 'bookstore.urls'
@@ -150,6 +157,68 @@ CACHES = {
         }
     }
 }
+#配置sesion使用redis
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'
 
+#支付宝的公钥s
 PRIVATE_KEY = os.path.join(BASE_DIR,'apps/order/keys/private_2048.txt')
 ALI_KEY = os.path.join(BASE_DIR,'apps/order/keys/alipay_key_2048.txt')
+
+#邮箱配置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = '17826839707@163.com'
+EMAIL_HOST_PASSWORD = 'zj32032'
+EMAIL_FROM = 'zj<17826839707@163.com>'
+
+#全文搜索配置
+HAYSTACK_CONNECTIONS = {
+    'default':{
+        #使用whoosh引擎
+        'ENGINE':'haystack.backends.whoosh_cn_backend.WhooshEngine',
+        #索引文件路径
+        'PATH':os.path.join(BASE_DIR,'whoosh_index')
+    }
+}
+#当添加,修改,删除数据时 , 自动生成索引
+HAYSTACK_SINGLE_PROCESSOR = 'haystack.singnals.RealtimeSignalProcessor'
+#搜索结果每页的条数
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 6
+
+#配置日志文件
+LOGGING = {
+    'version':1,
+    'disable_existing_loggers':False,
+    #日志输入的格式
+    'formatters':{
+        'verbose':{
+            'format':'%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple':{
+            'format':'%(levelname)s %(message)s'
+        }
+    },
+    # 处理日志的函数
+    'handlers':{
+        'file':{
+            'level':'DEBUG',
+            'class':'logging.FileHandler',
+            'filename':BASE_DIR + '/log/debug.log',
+            'formatter':'simple',
+        }
+    },
+    'loggers':{
+        'django':{
+            'handlers':['file'],
+            'propagate':True
+        },
+        #日志的命名空间
+        'django.request':{
+            'handlers':['file'],
+            'level':'DEBUG',
+            'propagate':True
+        }
+    }
+}
