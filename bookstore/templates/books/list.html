@@ -71,16 +71,16 @@
                 {% endfor %}
 			<div class="pagenation">
                 {% if books_li.has_previous %}
-                    <a href="/list/{{ type_id }}/{{ books_li.previous_page_number }}/?sort={{ sort }}">上一页</a>
+                    <a href="/books/list/{{ type_id }}/{{ books_li.previous_page_number }}/?sort={{ sort }}">上一页</a>
                 {% endif %}
 
                 {% for i in pages %}
-                     <a href="/list/{{ type_id }}/{{ i }}/?sort={{ sort }}" {% if books_li.number == i %}
+                     <a href="/books/list/{{ type_id }}/{{ i }}/?sort={{ sort }}" {% if books_li.number == i %}
                         class="active"
                      {% endif %}>{{ i }}</a>
                 {% endfor %}
                 {% if books_li.has_next %}
-                    <a href="/list/{{ type_id }}/{{ books_li.next_page_number }}/?sort={{ sort }}">下一页></a>
+                    <a href="/books/list/{{ type_id }}/{{ books_li.next_page_number }}/?sort={{ sort }}">下一页></a>
                 {% endif %}
 			</div>
 		</div>

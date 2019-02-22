@@ -55,10 +55,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'utils.middleware.BookMiddleware',
-    'utils.middleware.BooksMiddleWare2',
-    'utils.middleware.UrlPathRecordMiddleware',
-    'utils.middleware.BlockedIpMiddleware',
+    # 'utils.middleware.BookMiddleware',
+    # 'utils.middleware.BooksMiddleWare2',
+    # 'utils.middleware.UrlPathRecordMiddleware',
+    # 'utils.middleware.BlockedIpMiddleware',
 ]
 
 ROOT_URLCONF = 'bookstore.urls'
@@ -188,37 +188,37 @@ HAYSTACK_SINGLE_PROCESSOR = 'haystack.singnals.RealtimeSignalProcessor'
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 6
 
 #配置日志文件
-LOGGING = {
-    'version':1,
-    'disable_existing_loggers':False,
-    #日志输入的格式
-    'formatters':{
-        'verbose':{
-            'format':'%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
-        },
-        'simple':{
-            'format':'%(levelname)s %(message)s'
-        }
-    },
-    # 处理日志的函数
-    'handlers':{
-        'file':{
-            'level':'DEBUG',
-            'class':'logging.FileHandler',
-            'filename':BASE_DIR + '/log/debug.log',
-            'formatter':'simple',
-        }
-    },
-    'loggers':{
-        'django':{
-            'handlers':['file'],
-            'propagate':True
-        },
-        #日志的命名空间
-        'django.request':{
-            'handlers':['file'],
-            'level':'DEBUG',
-            'propagate':True
-        }
-    }
-}
+# LOGGING = {
+#     'version':1,
+#     'disable_existing_loggers':False,
+#     #日志输入的格式
+#     'formatters':{
+#         'verbose':{
+#             'format':'%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+#         },
+#         'simple':{
+#             'format':'%(levelname)s %(message)s'
+#         }
+#     },
+#     # 处理日志的函数
+#     'handlers':{
+#         'file':{
+#             'level':'DEBUG',
+#             'class':'logging.FileHandler',
+#             'filename':BASE_DIR + '/log/debug.log',
+#             'formatter':'simple',
+#         }
+#     },
+#     'loggers':{
+#         'django':{
+#             'handlers':['file'],
+#             'propagate':True
+#         },
+#         #日志的命名空间
+#         'django.request':{
+#             'handlers':['file'],
+#             'level':'DEBUG',
+#             'propagate':True
+#         }
+#     }
+# }

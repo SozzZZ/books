@@ -47,7 +47,7 @@
                     'books_id':books_id,
                     'csrfmiddlewaretoken':csrf
                 };
-                $.post('/cart/del',params,function (data) {
+                $.post('/cart/del/',params,function (data) {
                     if(data.res == 3){
                         books_ul.remove();
                         is_checked = books_ul.find(':checkbox').prop('checked');
